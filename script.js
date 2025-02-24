@@ -1,9 +1,17 @@
 /* script.js */
 let cups = localStorage.getItem("cups") ? parseInt(localStorage.getItem("cups")) : 0;
 
+let weeklySavings = 15
+
 function updateProgress() {
     document.getElementById("cup-count").innerText = cups;
     document.getElementById("progress-bar").style.width = (cups * 10) + "%"; // Assuming 10 cups max
+    let weeklySavings = 10 + (Math.round(cups / 3))
+
+   localStorage.setItem("lifetimeSavings", weeklySavings * 68)
+   localStorage.setItem("yearlySavings", weeklySavings * 52)
+   localStorage.setItem("monthlySavings", weeklySavings * 4)
+   localStorage.setItem("weeklySavings", weeklySavings)
 }
 
 function navigateToUpdate() {

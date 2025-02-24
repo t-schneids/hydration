@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydration Tracker</title>
     <link rel="stylesheet" href="general.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let lifetime = localStorage.getItem("lifetimeSavings") || 1021; // Default to 1021 if no data
+            let yearly = localStorage.getItem("yearlySavings") || 854;
+            let monthly = localStorage.getItem("monthlySavings") || 45;
+            let weekly = localStorage.getItem("weeklySavings");
+            document.getElementById("lifetime-savings").innerText = lifetime;
+            document.getElementById("yearly-savings").innerText = yearly;
+            document.getElementById("monthly-savings").innerText = monthly; 
+            document.getElementById("weekly-savings").innerText = weekly;
+        });
+    </script>
 </head>
 
 <body>
@@ -33,11 +45,24 @@
         </nav>
 
     </header>
-    <main>
-        <p>Welcome to the Sustainability page!</p>
-    </main>
+    <h2>Welcome to the Sustainability page! Find your statistics below</h2>
+    <ol>
+        <li>
+            <h3>Lifetime Savings: <span id="lifetime-savings">1021</span></h3>
+        </li>
+        <li>
+            <h3>Yearly Savings: <span id="yearly-savings">321</span></h3>
+        </li>
+        <li>
+            <h3>Monthly Savings: <span id="monthly-savings">102</span></h3>
+        </li>
+        <li>
+            <h3>Weekly Savings: <span id="weekly-savings">9</span></h3>
+        </li>
+    </ol>
+    
     <footer>
-        <p>&copy; 2023 Hydration Tracker</p>
+        <p>&copy; 2025 Hydration Tracker</p>
     </footer>
 </body>
 </html></html>
