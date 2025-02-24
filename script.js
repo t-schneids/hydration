@@ -50,3 +50,17 @@ document.addEventListener("DOMContentLoaded", function() {
         updateProgress();
     }
 });
+
+function enableEdit() {
+    document.getElementById("name").disabled = false;
+    document.getElementById("age").disabled = false;
+    document.getElementById("height").disabled = false;
+}
+
+function saveChanges() {
+    document.getElementById("name").disabled = true;
+    document.getElementById("age").disabled = true;
+    document.getElementById("height").disabled = true;
+    document.getElementById("edit-btn").style.display = "inline";
+    document.getElementById("save-btn").style.display = "none";
+}

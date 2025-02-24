@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: tan;
+   
 }
 
 /* General navigation control */
@@ -62,8 +63,15 @@ body {
     border-radius: 25px;
 }
 
-.progress-container {
+.progressWrapper {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-container {
+    width: 80%;
     background-color: #e0e0e0;
     border-radius: 25px;
     overflow: hidden;
