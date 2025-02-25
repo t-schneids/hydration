@@ -64,3 +64,13 @@ function saveChanges() {
     document.getElementById("edit-btn").style.display = "inline";
     document.getElementById("save-btn").style.display = "none";
 }
+
+function updateGoal() {
+    let newGoal = prompt("Enter your new daily water intake goal (cups):");
+    if (newGoal && !isNaN(newGoal)) {
+        localStorage.setItem("hydrationGoal", newGoal);
+        alert(`Goal updated to ${newGoal} cups per day!`);
+    } else {
+        alert("Please enter a valid number.");
+    }
+}
