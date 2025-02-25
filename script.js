@@ -51,20 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-function enableEdit() {
-    document.getElementById("name").disabled = false;
-    document.getElementById("age").disabled = false;
-    document.getElementById("height").disabled = false;
-}
-
-function saveChanges() {
-    document.getElementById("name").disabled = true;
-    document.getElementById("age").disabled = true;
-    document.getElementById("height").disabled = true;
-    document.getElementById("edit-btn").style.display = "inline";
-    document.getElementById("save-btn").style.display = "none";
-}
-
 function updateGoal() {
     let newGoal = prompt("Enter your new daily water intake goal (cups):");
     if (newGoal && !isNaN(newGoal)) {
@@ -74,3 +60,38 @@ function updateGoal() {
         alert("Please enter a valid number.");
     }
 }
+
+function updateProfileHeader() {
+    const firstName = document.getElementById("first_name").value.trim();
+    if (firstName) {
+        document.getElementById("profile-header").innerText = `${firstName}'s Profile`;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("edit-btn").addEventListener("click", function () {
+        document.getElementById("first_name").disabled = false;
+        document.getElementById("last_name").disabled = false;
+        document.getElementById("age").disabled = false;
+        document.getElementById("height").disabled = false;
+        document.getElementById("edit-btn").style.display = "none";
+        document.getElementById("save-btn").style.display = "inline";
+    });
+
+    document.getElementById("save-btn").addEventListener("click", function () {
+        const firstName = document.getElementById("first_name").value.trim();
+            if (firstName) {
+            localStorage.setItem("first_name", firstName);
+        }
+    
+        document.getElementById("first_name").disabled = true;
+        document.getElementById("last_name").disabled = true;
+        document.getElementById("age").disabled = true;
+        document.getElementById("height").disabled = true;
+        document.getElementById("edit-btn").style.display = "inline";
+        document.getElementById("save-btn").style.display = "none";
+    
+        updateProfileHeader();
+    });
+    
+});
