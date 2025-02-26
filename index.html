@@ -11,7 +11,8 @@
         document.addEventListener("DOMContentLoaded", function() {
             let firstName = localStorage.getItem("first_name") || "User";
             let lastName = localStorage.getItem("last_name") || "";
-            document.getElementById("tracker-header").innerText = `Welcome, ${firstName} ${lastName}`;
+            document.getElementById("tracker-header").innerText = `${firstName} ${lastName}, welcome to the Hydration Tracker!`;
+            document.getElementById("daily-goal").innerText = `Daily Hydration Goal (cups): ${localStorage.getItem("hydrationGoal") || 10}`;
         });
     </script>
 </head>
@@ -42,15 +43,21 @@
         </nav>
 
     </header>
-    <h1 id="tracker-header">Hydration Tracker</h1>
-   <div class="progressWrapper">
-    <p>Cups of Water: <span id="cup-count">0</span></p>
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
+    <main>
+        <h1 id="tracker-header">Welcome to the Hydration Tracker!</h1>
+        <div class="goalWrapper">
+            <h3 id="daily-goal">Daily Hyrdation Goal (cups): 10</h3>
         </div>
-   </div>
-    <button onclick="navigateToUpdate()">Update Progress</button>
-    <button onclick="updateGoal()">Update Goal</button> 
+
+        <div class="progressWrapper">
+            <p>Number of Consumed Cups: <span id="cup-count">0</span></p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+        <button onclick="navigateToUpdate()">Update Progress</button>
+        <button onclick="updateGoal()">Update Goal</button> 
+    </main>
 
     <footer>
         <p>&copy; 2025 Hydration Tracker</p>

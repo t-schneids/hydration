@@ -61,6 +61,7 @@ function updateGoal() {
         localStorage.setItem("hydrationGoal", newGoal);
         alert(`Goal updated to ${newGoal} cups per day!`);
         updateProgress();
+        document.getElementById("daily-goal").innerText = `Daily Hydration Goal (cups): ${localStorage.getItem("hydrationGoal") || 10}`;
     } else {
         alert("Please enter a valid number.");
     }
