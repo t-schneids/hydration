@@ -6,6 +6,14 @@
     <title>Hydration Tracker</title>
     <link rel="stylesheet" href="general.css">
     <script src="script.js"></script>
+    <script>
+        // dynamically change header to be user name
+        document.addEventListener("DOMContentLoaded", function() {
+            let firstName = localStorage.getItem("first_name") || "User";
+            let lastName = localStorage.getItem("last_name") || "";
+            document.getElementById("tracker-header").innerText = `Welcome, ${firstName} ${lastName}`;
+        });
+    </script>
 </head>
 
 <body>
@@ -42,7 +50,7 @@
         </div>
    </div>
     <button onclick="navigateToUpdate()">Update Progress</button>
-    <button onclick="updateGoal()">Update Goal</button> <!-- New button added -->
+    <button onclick="updateGoal()">Update Goal</button> 
 
     <footer>
         <p>&copy; 2025 Hydration Tracker</p>

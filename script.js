@@ -3,9 +3,13 @@ let cups = localStorage.getItem("cups") ? parseInt(localStorage.getItem("cups"))
 
 let weeklySavings = 15
 
+// need to create variable for hydration goal (i.e. max cups)
+let hydrationGoal = localStorage.getItem("hydrationGoal") || 10;
+localStorage.setItem("hydrationGoal", hydrationGoal);
+
 function updateProgress() {
     document.getElementById("cup-count").innerText = cups;
-    document.getElementById("progress-bar").style.width = (cups * 10) + "%"; // Assuming 10 cups max
+    document.getElementById("progress-bar").style.width = Math.round((cups / localStorage.getItem("hydrationGoal")) * 100) + "%"; // Assuming 10 cups max
     let weeklySavings = 10 + (Math.round(cups / 3))
 
    localStorage.setItem("lifetimeSavings", weeklySavings * 68)
@@ -21,7 +25,7 @@ function navigateToUpdate() {
 
 function increaseCups() {
     let tempCups = parseInt(localStorage.getItem("tempCups"));
-    tempCups = Math.min(tempCups + 1, 10);
+    tempCups = Math.min(tempCups + 1, localStorage.getItem("hydrationGoal"));
     localStorage.setItem("tempCups", tempCups);
     document.getElementById("update-cup-count").innerText = tempCups;
 }
@@ -56,42 +60,10 @@ function updateGoal() {
     if (newGoal && !isNaN(newGoal)) {
         localStorage.setItem("hydrationGoal", newGoal);
         alert(`Goal updated to ${newGoal} cups per day!`);
+        updateProgress();
     } else {
         alert("Please enter a valid number.");
     }
 }
 
-function updateProfileHeader() {
-    const firstName = document.getElementById("first_name").value.trim();
-    if (firstName) {
-        document.getElementById("profile-header").innerText = `${firstName}'s Profile`;
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("edit-btn").addEventListener("click", function () {
-        document.getElementById("first_name").disabled = false;
-        document.getElementById("last_name").disabled = false;
-        document.getElementById("age").disabled = false;
-        document.getElementById("height").disabled = false;
-        document.getElementById("edit-btn").style.display = "none";
-        document.getElementById("save-btn").style.display = "inline";
-    });
-
-    document.getElementById("save-btn").addEventListener("click", function () {
-        const firstName = document.getElementById("first_name").value.trim();
-            if (firstName) {
-            localStorage.setItem("first_name", firstName);
-        }
     
-        document.getElementById("first_name").disabled = true;
-        document.getElementById("last_name").disabled = true;
-        document.getElementById("age").disabled = true;
-        document.getElementById("height").disabled = true;
-        document.getElementById("edit-btn").style.display = "inline";
-        document.getElementById("save-btn").style.display = "none";
-    
-        updateProfileHeader();
-    });
-    
-});
