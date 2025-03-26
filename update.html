@@ -9,10 +9,38 @@
 </head>
 
 <body>
+    <header>
+        <nav class="nav">
+            <ul class="navlist">
+            <div class="logo">
+                <li>
+                    <a href="index.html"> <img src="logo2.png" alt="company logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html"> Hydration</a>
+                </li>
+            </div>
+                <div class="tabs">
+                    <li>
+                        <a href="profile.html"> Profile</a>
+                    </li>
+                    <li>
+                        <a href="sustainability.html" > Sustainability</a>
+                    </li>
+                    <li>
+                        <a href="faq.html"> FAQ</a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+
+    </header>
+
     <h1>Update Cups</h1>
     <p>Cups: <span id="update-cup-count">0</span></p>
-    <button onclick="increaseCups()">Increase</button>
-    <button onclick="decreaseCups()">Decrease</button>
+    <button onclick="increaseCups()">+</button>
+    <button onclick="decreaseCups()">-</button>
     <br><br>
     <button onclick="confirmUpdate()">Confirm</button>
     <button onclick="cancelUpdate()">Cancel</button>

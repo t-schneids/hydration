@@ -29,12 +29,39 @@ document.addEventListener("DOMContentLoaded", function () {
         saveBtn.style.display = "inline-block";
     });
 
+    function getHydrationGoal(height) {
+        let waterIntakeCups;
+    
+        if (height >= 55 && height <= 59) {
+            waterIntakeCups = 7; // max value in range 6–7 cups
+        } else if (height >= 60 && height <= 64) {
+            waterIntakeCups = 8; // max value in range 7–8 cups
+        } else if (height >= 65 && height <= 69) {
+            waterIntakeCups = 9; // max value in range 8–9 cups
+        } else if (height >= 70 && height <= 74) {
+            waterIntakeCups = 10; // max value in range 9–10 cups
+        } else if (height >= 75 && height <= 79) {
+            waterIntakeCups = 11; // max value in range 10–11 cups
+        } else if (height >= 80) {
+            waterIntakeCups = 12; // max value in range 11–12 cups
+        } else {
+            waterIntakeCups = 7; // Default to lowest range if height is out of expected bounds
+        }
+    
+        localStorage.setItem("hydrationGoal", waterIntakeCups);
+        return waterIntakeCups;
+    }
+
     // Save data when "Save" is clicked
     saveBtn.addEventListener("click", function () {
         localStorage.setItem("first_name", firstNameInput.value);
         localStorage.setItem("last_name", lastNameInput.value);
         localStorage.setItem("age", ageInput.value);
         localStorage.setItem("height", heightInput.value);
+
+        // modify hydration goal based on height
+        let newGoal = getHydrationGoal(parseInt(heightInput.value));
+        localStorage.setItem("hydrationGoal", newGoal);
 
         // Disable inputs again
         firstNameInput.disabled = true;
